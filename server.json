@@ -1,0 +1,41 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "ru.smartpdf/smartpdf",
+  "title": "SmartPDF",
+  "description": "24 PDF tools: convert to and from Office and JPG, compress, merge, split, OCR, sign, watermark",
+  "version": "1.0.0",
+  "websiteUrl": "https://dev.smartpdf.ru",
+  "repository": {
+    "url": "https://github.com/kirmoz1997/smartpdf-agents",
+    "source": "github"
+  },
+  "icons": [
+    {
+      "src": "https://smartpdf.ru/assets/brand/smartpdf-logo-400.png",
+      "mimeType": "image/png",
+      "sizes": ["400x400"]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.smartpdf.ru/mcp",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "SmartPDF API key with the Bearer prefix",
+          "value": "Bearer {api_key}",
+          "isRequired": true,
+          "isSecret": true,
+          "variables": {
+            "api_key": {
+              "description": "API key (sk_live_…) from https://smartpdf.ru/dashboard/api-keys",
+              "isRequired": true,
+              "isSecret": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

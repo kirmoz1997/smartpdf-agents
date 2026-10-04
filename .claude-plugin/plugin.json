@@ -1,0 +1,32 @@
+{
+  "name": "smartpdf",
+  "version": "1.0.0",
+  "description": "24 операции с PDF для Claude Code: MCP-сервер SmartPDF для файлов по ссылкам и навык для файлов с диска — сжатие, конвертация, распознавание текста, подпись, водяной знак, пароль. Оплата за запрос с баланса API.",
+  "author": {
+    "name": "SmartPDF",
+    "email": "smartpdf@yandex.ru",
+    "url": "https://dev.smartpdf.ru"
+  },
+  "homepage": "https://dev.smartpdf.ru/docs/claude-code",
+  "repository": "https://github.com/kirmoz1997/smartpdf-agents",
+  "license": "MIT",
+  "keywords": ["pdf", "ocr", "convert", "compress", "merge", "watermark", "mcp", "smartpdf"],
+  "userConfig": {
+    "api_key": {
+      "type": "string",
+      "title": "Ключ API SmartPDF",
+      "description": "Ключ sk_live_… из личного кабинета: https://smartpdf.ru/dashboard/api-keys",
+      "required": true,
+      "sensitive": true
+    }
+  },
+  "mcpServers": {
+    "smartpdf": {
+      "type": "http",
+      "url": "https://mcp.smartpdf.ru/mcp",
+      "headers": {
+        "Authorization": "Bearer ${user_config.api_key}"
+      }
+    }
+  }
+}
