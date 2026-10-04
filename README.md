@@ -43,6 +43,9 @@ SmartPDF для файлов по ссылкам и навык `smartpdf` для
 | Транспорт | Streamable HTTP |
 | Ключ | `Authorization: Bearer sk_live_…` или `X-API-Key: sk_live_…` |
 
+Сервер есть в [официальном реестре MCP](https://registry.modelcontextprotocol.io/v0.1/servers?search=ru.smartpdf/smartpdf)
+под именем `ru.smartpdf/smartpdf`.
+
 Готовые конфиги для Claude Desktop, Cursor, VS Code, Codex CLI, Gemini CLI, Windsurf, Cline, n8n и Make —
 в [документации](https://dev.smartpdf.ru/docs/mcp). Инструменты принимают публичные ссылки на файлы до 100 МБ и
 возвращают ссылку на результат.
@@ -81,7 +84,7 @@ Claude Code plugin (remote MCP server + agent skill), a standalone Agent Skill w
 local files, and `server.json` for the official MCP Registry.
 
 - MCP: `https://mcp.smartpdf.ru/mcp`, Streamable HTTP, `Authorization: Bearer <API key>`; 24 tools that take public file
-  URLs and return a download link, plus `get_balance`.
+  URLs and return a download link, plus `get_balance`. Official MCP Registry: `ru.smartpdf/smartpdf`.
 - Claude Code: `/plugin marketplace add kirmoz1997/smartpdf-agents`, then `/plugin install smartpdf@smartpdf`.
 - API keys: [smartpdf.ru](https://smartpdf.ru/register?from=dev) — 300 ₽ of free balance after email confirmation.
 - Documentation (in Russian): [dev.smartpdf.ru/docs](https://dev.smartpdf.ru/docs),
