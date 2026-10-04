@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "smartpdf": {
+      "url": "https://mcp.smartpdf.ru/mcp",
+      "headers": {
+        "Authorization": "Bearer ${SMARTPDF_API_KEY}"
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "smartpdf",
+  "version": "1.0.0",
+  "description": "24 PDF tools for Cursor: SmartPDF MCP server for files by URL and a skill for local files — convert to and from Word, Excel, PowerPoint and JPG, compress, merge, split, OCR (incl. Russian), sign, watermark, password. Pay per request from your SmartPDF API balance.",
+  "author": {
+    "name": "SmartPDF",
+    "email": "smartpdf@yandex.ru"
+  },
+  "homepage": "https://dev.smartpdf.ru/docs/cursor",
+  "repository": "https://github.com/kirmoz1997/smartpdf-agents",
+  "license": "MIT",
+  "keywords": ["pdf", "ocr", "convert", "compress", "merge", "watermark", "mcp", "smartpdf"],
+  "logo": "assets/logo.png",
+  "variables": {
+    "type": "object",
+    "properties": {
+      "SMARTPDF_API_KEY": {
+        "type": "string",
+        "title": "SmartPDF API key",
+        "description": "sk_live_… from https://smartpdf.ru/dashboard/api-keys"
+      }
+    },
+    "required": ["SMARTPDF_API_KEY"]
+  }
+}

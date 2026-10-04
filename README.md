@@ -12,6 +12,7 @@ PDF, сжатие, объединение и разделение, распоз�
 | Что | Где |
 |---|---|
 | Плагин Claude Code: MCP-сервер и навык | `.claude-plugin/` |
+| Плагин Cursor: MCP-сервер и навык | `.cursor-plugin/`, `mcp.json` |
 | Навык (Agent Skill) для любого агента: инструкция, скрипт для файлов с диска, справочник параметров | [`skills/smartpdf/`](skills/smartpdf) |
 | Описание для реестра MCP | [`server.json`](server.json) |
 
@@ -34,6 +35,12 @@ SmartPDF для файлов по ссылкам и навык `smartpdf` для
 
 Из терминала: `claude plugin marketplace add kirmoz1997/smartpdf-agents`, затем
 `claude plugin install smartpdf@smartpdf --config api_key=sk_live_…`.
+
+## Cursor
+
+Плагин для Cursor (MCP-сервер и навык) — в этом же репозитории (`.cursor-plugin/`, `mcp.json`); ключ задаётся в
+**Plugins → Configure**. Только MCP-сервер — одной ссылкой: [Добавить в Cursor](https://cursor.com/install-mcp?name=smartpdf&config=eyJ1cmwiOiJodHRwczovL21jcC5zbWFydHBkZi5ydS9tY3AiLCJoZWFkZXJzIjp7IkF1dGhvcml6YXRpb24iOiJCZWFyZXIgJHtlbnY6U01BUlRQREZfQVBJX0tFWX0ifX0%3D) (ключ — из переменной окружения
+`SMARTPDF_API_KEY`).
 
 ## Только MCP-сервер
 
@@ -86,6 +93,7 @@ local files, and `server.json` for the official MCP Registry.
 - MCP: `https://mcp.smartpdf.ru/mcp`, Streamable HTTP, `Authorization: Bearer <API key>`; 24 tools that take public file
   URLs and return a download link, plus `get_balance`. Official MCP Registry: `ru.smartpdf/smartpdf`.
 - Claude Code: `/plugin marketplace add kirmoz1997/smartpdf-agents`, then `/plugin install smartpdf@smartpdf`.
+- Cursor: plugin in `.cursor-plugin/` + `mcp.json` (key in Plugins → Configure), or [Add to Cursor](https://cursor.com/install-mcp?name=smartpdf&config=eyJ1cmwiOiJodHRwczovL21jcC5zbWFydHBkZi5ydS9tY3AiLCJoZWFkZXJzIjp7IkF1dGhvcml6YXRpb24iOiJCZWFyZXIgJHtlbnY6U01BUlRQREZfQVBJX0tFWX0ifX0%3D).
 - API keys: [smartpdf.ru](https://smartpdf.ru/register?from=dev) — 300 ₽ of free balance after email confirmation.
 - Documentation (in Russian): [dev.smartpdf.ru/docs](https://dev.smartpdf.ru/docs),
   [llms.txt](https://dev.smartpdf.ru/llms.txt). Contact: smartpdf@yandex.ru.
