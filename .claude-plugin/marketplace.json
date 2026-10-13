@@ -10,7 +10,7 @@
     {
       "name": "smartpdf",
       "source": "./",
-      "description": "24 операции с PDF: MCP-сервер SmartPDF и навык для файлов с диска",
+      "description": "47 операций с PDF и фото: MCP-сервер SmartPDF и навык для файлов с диска",
       "homepage": "https://dev.smartpdf.ru",
       "category": "productivity",
       "keywords": ["pdf", "ocr", "convert", "mcp"]

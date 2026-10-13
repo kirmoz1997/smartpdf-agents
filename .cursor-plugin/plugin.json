@@ -1,7 +1,7 @@
 {
   "name": "smartpdf",
-  "version": "1.0.0",
-  "description": "24 PDF tools for Cursor: SmartPDF MCP server for files by URL and a skill for local files — convert to and from Word, Excel, PowerPoint and JPG, compress, merge, split, OCR (incl. Russian), sign, watermark, password. Pay per request from your SmartPDF API balance.",
+  "version": "1.1.0",
+  "description": "47 PDF and image tools for Cursor: SmartPDF MCP server for files by URL and a skill for local files — convert to and from Word, Excel, PowerPoint, JPG and Markdown, compress, merge, split, OCR (incl. Russian), edit, redact personal data, sign, watermark, password. Pay per request from your SmartPDF API balance.",
   "author": {
     "name": "SmartPDF",
     "email": "smartpdf@yandex.ru"

@@ -1,24 +1,26 @@
 ---
 name: smartpdf
 description: >-
-  PDF tools by SmartPDF (smartpdf.ru): compress, merge, split, convert PDF to and from Word, Excel, PowerPoint,
-  JPG and text, OCR scans (Russian, English, German, French), rotate, delete, extract or reorder pages, add page
-  numbers, sign, watermark, password-protect or unlock. Use when the user asks to do any of this with PDF files or
-  to turn documents or images into PDF: SmartPDF MCP tools for public links, the bundled script for local files.
-  Сжать, объединить, разделить, конвертировать PDF, распознать текст, подписать, водяной знак, пароль на PDF.
+  PDF and image tools by SmartPDF (smartpdf.ru): compress, merge, split, convert PDF to and from Word, Excel,
+  PowerPoint, JPG, PNG, Markdown and text, DjVu/FB2/EPUB/HEIC to PDF, OCR scans and photos (Russian, English, German,
+  French), edit PDF (add text, signature, images, white-out), find and redact personal data, crop, rotate, delete,
+  extract or reorder pages, page numbers, sign, watermark, password, grayscale, PDF/A, repair; resize, crop, rotate and
+  compress photos. Use when the user asks to do any of this with PDF files or images: SmartPDF MCP tools for public
+  links, the bundled script for local files. Сжать, объединить, конвертировать PDF, в Markdown, распознать текст,
+  редактировать, скрыть персональные данные, подписать, водяной знак, пароль, фото.
 ---
 
 # SmartPDF
 
-24 операции с PDF через API SmartPDF. Каждая операция — платный запрос с баланса API пользователя в рублях: цена
-зависит от размера файла, у распознавания и конвертации из PDF — ещё и от числа страниц. Перед обработкой многих
+47 операций с PDF и фото через API SmartPDF. Каждая операция — платный запрос с баланса API пользователя в рублях:
+цена зависит от размера файла, у распознавания и конвертации из PDF — ещё и от числа страниц (у «Фото в текст» — фото). Перед обработкой многих
 файлов предупреди пользователя, что каждый файл — отдельный запрос.
 
 ## Как обработать файл
 
 | Где файл | Как |
 |---|---|
-| Публичная ссылка (http или https, без входа, до 100 МБ) и подключены инструменты MCP SmartPDF (`compress_pdf`, `merge_pdfs`, …) | Вызови инструмент: `file_url`, у объединения и JPG в PDF — `file_urls`. В ответе `download_url` — ссылка на результат, действует час |
+| Публичная ссылка (http или https, без входа, до 100 МБ) и подключены инструменты MCP SmartPDF (`compress_pdf`, `merge_pdfs`, …) | Вызови инструмент: `file_url`, у операций над несколькими файлами (объединение, фото) — `file_urls`. В ответе `download_url` — ссылка на результат, действует час |
 | Файл на диске; ссылка на `localhost` или во внутренней сети; инструментов MCP нет | Скрипт `scripts/smartpdf.py` — REST API, нужен Python 3 |
 
 Если доступны инструменты MCP, передавай им ссылку — не скачивай файл, чтобы загрузить его скриптом.
@@ -62,20 +64,41 @@ python3 scripts/smartpdf.py balance                     # баланс и цен
 |---|---|---|---|
 | Word в PDF | `word-to-pdf` | `word_to_pdf` | — |
 | JPG в PDF | `jpg-to-pdf` | `jpg_to_pdf` | `order`, `fit` |
+| Фото в PDF | `photo-to-pdf` | `photo_to_pdf` | `order`, `page`, `compact`, `grayscale`, `mode`, `scan_color`, `corners` |
 | Excel в PDF | `xlsx-to-pdf` | `xlsx_to_pdf` | — |
 | PowerPoint в PDF | `pptx-to-pdf` | `pptx_to_pdf` | — |
+| DjVu в PDF | `djvu-to-pdf` | `djvu_to_pdf` | — |
+| FB2 в PDF | `fb2-to-pdf` | `fb2_to_pdf` | `page` |
+| EPUB в PDF | `epub-to-pdf` | `epub_to_pdf` | `page` |
 | HTML в PDF | `html-to-pdf` | `html_to_pdf` | `page_size`, `orientation`, `margin` |
-| PDF в Word | `pdf-to-word` | `pdf_to_word` | — |
+| PDF в Word | `pdf-to-word` | `pdf_to_word` | `ocr` |
 | PDF в JPG | `pdf-to-jpg` | `pdf_to_jpg` | `dpi`, `pages` |
+| PDF в PNG | `pdf-to-png` | `pdf_to_png` | `dpi` |
 | PDF в Excel | `pdf-to-excel` | `pdf_to_excel` | `layout` |
 | PDF в PowerPoint | `pdf-to-pptx` | `pdf_to_pptx` | — |
+| PDF в Markdown | `pdf-to-markdown` | `pdf_to_markdown` | `ocr` |
 | PDF в текст | `pdf-to-txt` | `pdf_to_txt` | `mode` |
-| Сжать PDF | `compress` | `compress_pdf` | `level` |
+| Сжать фото | `compress-image` | `compress_image` | `level`, `target_kb` |
+| HEIC в JPG | `heic-to-jpg` | `heic_to_jpg` | `compact`, `keep_metadata` |
+| Фото в текст | `image-to-text` | `image_to_text` | `languages`, `format` |
+| PNG в JPG | `png-to-jpg` | `png_to_jpg` | — |
+| JPG в PNG | `jpg-to-png` | `jpg_to_png` | — |
+| WEBP в JPG | `webp-to-jpg` | `webp_to_jpg` | — |
+| Изменить размер фото | `resize-image` | `resize_image` | `mode`, `percent`, `width`, `height`, `keep_aspect`, `enlarge` |
+| Обрезать фото | `crop-image` | `crop_image` | `box`* |
+| Повернуть фото | `rotate-image` | `rotate_image` | `angle`, `flip` |
+| Word в JPG | `word-to-jpg` | `word_to_jpg` | `dpi` |
+| Редактор PDF | `edit` | `edit_pdf` | `objects`* |
+| Сжать PDF | `compress` | `compress_pdf` | `level`, `target_mb` |
+| PDF в ч/б | `grayscale` | `grayscale_pdf` | — |
+| PDF в PDF/A | `to-pdfa` | `pdf_to_pdfa` | `version` |
+| Восстановить PDF | `repair` | `repair_pdf` | — |
 | Объединить PDF | `merge` | `merge_pdfs` | `order` |
 | Разделить PDF | `split` | `split_pdf` | `mode`, `ranges` |
 | Распознать текст | `ocr` | `ocr_pdf` | `languages` |
 | Сгладить PDF | `flatten` | `flatten_pdf` | — |
 | Удалить страницы | `delete-pages` | `delete_pages` | `pages`* |
+| Обрезать PDF | `crop` | `crop_pdf` | `mode`, `box`, `pages` |
 | Извлечь страницы | `extract-pages` | `extract_pages` | `pages`* |
 | Повернуть страницы | `rotate` | `rotate_pdf` | `pages`, `angle` |
 | Порядок страниц | `reorder-pages` | `reorder_pages` | `new_order`* |
@@ -83,6 +106,8 @@ python3 scripts/smartpdf.py balance                     # баланс и цен
 | Подписать PDF | `sign` | `sign_pdf` | `signature_data`*, `page`, `x`, `y`, `width`, `height` |
 | Защитить паролем | `protect` | `protect_pdf` | `user_password`*, `owner_password` |
 | Снять пароль | `unlock` | `unlock_pdf` | `password`* |
+| Скрыть персональные данные | `redact` | `redact_pdf` | `areas`, `find`, `clean` |
+| Найти персональные данные | `find-personal-data` | `find_personal_data` | `kinds`, `words` |
 | Водяной знак | `watermark` | `watermark_pdf` | `text`, `image_file_id`, `font_size`, `color`, `opacity`, `angle`, `position`, `pages`, `scale` |
 
 У всех операций есть `webhook_url` — https-адрес для уведомления о готовности вместо ожидания. Баланс — `get_balance` в MCP или `python3 scripts/smartpdf.py balance`.

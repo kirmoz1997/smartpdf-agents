@@ -2,9 +2,10 @@
 
 # SmartPDF для ИИ-агентов
 
-24 операции с PDF для Claude Code, Codex CLI, Gemini CLI, Cursor, VS Code и других агентов: конвертация в PDF и из
-PDF, сжатие, объединение и разделение, распознавание текста (в том числе русского), страницы, подпись, водяной знак,
-пароль. Серверы в Москве, оплата в рублях за запрос.
+47 операций с PDF и фото для Claude Code, Codex CLI, Gemini CLI, Cursor, VS Code и других агентов: конвертация в PDF и
+из PDF (в том числе Markdown, DjVu, FB2, EPUB), сжатие, объединение и разделение, распознавание текста (в том числе
+русского), редактор PDF, поиск и удаление персональных данных, страницы, подпись, водяной знак, пароль, инструменты для
+фото. Серверы в Москве, оплата в рублях за запрос.
 
 [Портал для разработчиков](https://dev.smartpdf.ru) · [Документация](https://dev.smartpdf.ru/docs) ·
 [llms.txt](https://dev.smartpdf.ru/llms.txt)
@@ -90,7 +91,7 @@ SmartPDF is a Russian PDF service (servers in Moscow, billing in rubles per requ
 Claude Code plugin (remote MCP server + agent skill), a standalone Agent Skill with a stdlib-only Python script for
 local files, and `server.json` for the official MCP Registry.
 
-- MCP: `https://mcp.smartpdf.ru/mcp`, Streamable HTTP, `Authorization: Bearer <API key>`; 24 tools that take public file
+- MCP: `https://mcp.smartpdf.ru/mcp`, Streamable HTTP, `Authorization: Bearer <API key>`; 47 tools that take public file
   URLs and return a download link, plus `get_balance`. Official MCP Registry: `ru.smartpdf/smartpdf`.
 - Claude Code: `/plugin marketplace add kirmoz1997/smartpdf-agents`, then `/plugin install smartpdf@smartpdf`.
 - Cursor: plugin in `.cursor-plugin/` + `mcp.json` (key in Plugins → Configure), or [Add to Cursor](https://cursor.com/install-mcp?name=smartpdf&config=eyJ1cmwiOiJodHRwczovL21jcC5zbWFydHBkZi5ydS9tY3AiLCJoZWFkZXJzIjp7IkF1dGhvcml6YXRpb24iOiJCZWFyZXIgJHtlbnY6U01BUlRQREZfQVBJX0tFWX0ifX0%3D).
